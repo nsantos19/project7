@@ -1,5 +1,5 @@
 export function fetchLongitudeAndLatitude(query) {
-  const searchUrl = new URL("https://geocode.maps.co/search");
+  const searchUrl = new URL("https://geocode-cache.herokuapp.com/search");
   searchUrl.searchParams.append("q", query);
   return fetch(searchUrl)
   .then(response=>response.json())
