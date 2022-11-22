@@ -6,6 +6,6 @@ export async function writeToJSONFile(path, data) {
 }
 
 // readFromJSONFile(path: string): Promise<object | object[]>
-export async function readFromJSONFile(path) {
-  return await JSON.parse(readFile(path))
+export function readFromJSONFile(path) {
+  return readFile(path).then(e => JSON.parse(e))
 }
