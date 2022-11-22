@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 
 //fetchCurrentWeather(longitude: number, latitude: number): Promise<{ time: string[], temperature_2m: number[] }>
 export function fetchCurrentWeather(longitude, latitude) {
-  const searchURL = new URL("https://api.open-meteo.com/v1/forecast?");
+  const searchURL = new URL("https://api.open-meteo.com/v1/forecast");
   searchURL.searchParams.append("latitude", latitude)
   searchURL.searchParams.append("longitude", longitude)
   searchURL.searchParams.append("hourly", "temperature_2m")
