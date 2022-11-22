@@ -15,7 +15,7 @@ export function fetchCurrentWeather(longitude, latitude) {
       let obj = {};
       obj.time = json.hourly.time;
       obj.temperature_2m = json.hourly.temperature_2m;
-      console.log(obj)
+      
       return obj
     }
   )

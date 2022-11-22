@@ -3,8 +3,10 @@ import { fetchLongitudeAndLatitude } from "./fetchLongitudeAndLatitude.js"
 import { fetchUniversities } from "./fetchUniversities.js"
 
 export function fetchUniversityWeather(query) {
+  let uniArray = []
     return fetchUniversities(query).then(uString =>{
-      // turn string of unis into string of promises 
+      // turn string of unis into string of promises
+      uniArray = uString
       let locationPArray = []
       uString.forEach(u => locationPArray.push(fetchLongitudeAndLatitude(u)))
       //turns that string of promises into string of locations
@@ -12,6 +14,7 @@ export function fetchUniversityWeather(query) {
     })
      .then(locArray => {
       let weatherPArray = []
+  
        //turns string of locations into string of weather promises
       locArray.forEach(l => weatherPArray.push(fetchCurrentWeather(l.lon,l.lat)))
        //turns that string of promises into string of weather objects
@@ -20,7 +23,7 @@ export function fetchUniversityWeather(query) {
 
       let tAvgArr = []
        //finds the average for each weather object
-      tempArr.forEach(obj => {
+        tempArr.forEach(obj => {
         let sum = obj.temperature_2m.reduce((acc,e) => acc + e, 0)
         tAvgArr.push(sum/obj.temperature_2m.length);
      })
@@ -28,11 +31,12 @@ export function fetchUniversityWeather(query) {
      let totalAvg = tAvgArr.reduce((acc,e) => acc+e,0)/tAvgArr.length
      let returnObj = {};
        //add total average to weather object
-     returnObj[totalAverage] = totalAvg;
+     returnObj["totalAverage"] = totalAvg;
        //adds the rest of the object using the university names
-     for(let i = 0; i < query.length; ++i){
-       returnObj[query[i]] = tAvgArr[i];
+     for(let i = 0; i < uniArray.length; ++i){
+       returnObj[uniArray[i] ]= tAvgArr[i];
      }
+     console.log(returnObj)
        //returns object
      return returnObj})
 }
