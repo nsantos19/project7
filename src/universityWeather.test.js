@@ -1,6 +1,13 @@
 import assert from "node:assert";
-import { fetchUCalWeather, fetchUMassWeather } from "./universityWeather.js";
+import { fetchUniversityWeather,fetchUCalWeather, fetchUMassWeather } from "./universityWeather.js";
 
+test("fetchUniversityWeather reject invalid input", ()=>{
+  const promise = fetchUniversityWeather("U");
+  return promise.then((response) => {
+    assert(!response.ok);
+    assert(typeof response === "Error");
+  });
+  })
 test("fetchUCalWeather follows type specification", () => {
   const promise = fetchUCalWeather();
   assert(typeof promise === "object" && typeof promise.then === "function");
