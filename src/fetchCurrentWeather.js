@@ -11,8 +11,12 @@ export function fetchCurrentWeather(longitude, latitude) {
   .then(response => response.json()) // parse the result to a json
   .then(
     json => {
-      console.log(json.hourly.time)
-      return {"time" : new Array(obj.hourly.time), "temperature_2m": new Array(obj.hourly.temperature_2m)}
+      //console.log(json.hourly.time)
+      let obj = {};
+      obj.time = json.hourly.time;
+      obj.temperature_2m = json.hourly.temperature_2m;
+      console.log(obj)
+      return obj
     }
   )
   .catch(err => console.log("Unable to get weather with: " + err));
