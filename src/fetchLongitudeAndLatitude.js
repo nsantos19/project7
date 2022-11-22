@@ -9,6 +9,6 @@ export function fetchLongitudeAndLatitude(query) {
   .then(data => Array.isArray(data)&& data.length > 0
     ? Promise.resolve(data[0]) : Promise.reject(new Error("No results found for query")))
   .then(obj =>{ return {"lon" : Number(obj.lon), "lat": Number(obj.lat)}})
-  .catch(err => console.log("Unable to get coordination with :" + err));
+  //.catch(err => console.log("Unable to get coordination with :" + err));
   // fetch(`https://geocode.maps.co/search?q=${query}$`)
 }

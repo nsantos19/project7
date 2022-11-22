@@ -12,5 +12,5 @@ export function fetchUniversities(query) {
     let arr = []
     json.forEach(obj => "name" in obj ? arr.push(obj.name): false)
     return arr;
-  }).catch(err => console.log("unable to retrieve university data: " + err));
+  })//.catch(err => console.log("unable to retrieve university data: " + err));
 }

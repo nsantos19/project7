@@ -14,5 +14,5 @@ export function fetchCurrentWeather(longitude, latitude) {
       return {time: json.hourly.time, temperature_2m: json.hourly.temperature_2m}
     }
   )
-  .catch(err => console.log("Unable to get weather with: " + err));
+  //.catch(err => console.log("Unable to get weather with: " + err));
 }
