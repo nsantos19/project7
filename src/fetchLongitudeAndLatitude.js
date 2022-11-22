@@ -5,6 +5,7 @@ export function fetchLongitudeAndLatitude(query) {
   const searchUrl = new URL("https://geocode-cache.herokuapp.com/search");
   searchUrl.searchParams.append("q", query);
   return fetch(searchUrl)
+  .then(response => response.ok? response : Promise.reject(new Error(response.statusText)))
   .then(response=>response.json())
   .then(data => Array.isArray(data)&& data.length > 0
     ? Promise.resolve(data[0]) : Promise.reject(new Error("No results found for query")))

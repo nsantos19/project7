@@ -8,6 +8,7 @@ export function fetchCurrentWeather(longitude, latitude) {
   searchURL.searchParams.append("hourly", "temperature_2m")
   searchURL.searchParams.append("temperature_unit", "fahrenheit")
   return fetch(searchURL)
+  .then(response => response.ok? response : Promise.reject(new Error(response.statusText)))
   .then(response => response.json())
   .then(
     json => {
