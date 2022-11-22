@@ -36,7 +36,7 @@ export function fetchUniversityWeather(query) {
      for(let i = 0; i < uniArray.length; ++i){
        returnObj[uniArray[i] ]= tAvgArr[i];
      }
-     console.log(returnObj)
+    
        //returns object
      return returnObj})
 }
