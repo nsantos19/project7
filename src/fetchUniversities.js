@@ -9,9 +9,9 @@ export function fetchUniversities(query) {
   searchURL.searchParams.append("name",query);
 
   return fetch(searchURL.toString())
-  .then(response => response.ok? response : Promise.reject(new Error(response.statusText)))
-  .then(response=>response.json(), response => new Error(response.statusText))
+  .then(response => response.ok? response.json() : Promise.reject(new Error(response.statusText)))
   .then(json =>{
+    console.log(json)
     let arr = []
     json.forEach(obj => "name" in obj ? arr.push(obj.name): false)
     return arr;
