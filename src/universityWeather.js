@@ -30,9 +30,9 @@ export function fetchUniversityWeather(query) {
 }
 
 export function fetchUMassWeather() {
-  // TODO
+   return fetchUniversityWeather("University of Massachusetts");gi
 }
 
 export function fetchUCalWeather() {
-  // TODO
+  return fetchUniversityWeather("University of California");
 }
