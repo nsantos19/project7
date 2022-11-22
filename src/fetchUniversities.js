@@ -10,7 +10,7 @@ export function fetchUniversities(query) {
 
   return fetch(searchURL.toString())
   .then(response => response.ok? response : Promise.reject(new Error(response.statusText)))
-  .then( response => response.json())
+  .then(response=>response.json(), response => new Error(response.statusText))
   .then(json =>{
     let arr = []
     json.forEach(obj => "name" in obj ? arr.push(obj.name): false)
