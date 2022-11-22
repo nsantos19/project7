@@ -1,6 +1,6 @@
 import assert from "node:assert";
 import { fetchLongitudeAndLatitude } from "./fetchLongitudeAndLatitude.js";
-
+//H.W.
 test("fetchLongitudeAndLatitude follows type specification", () => {
   const promise = fetchLongitudeAndLatitude(
     "University of Massachusetts Amherst"
