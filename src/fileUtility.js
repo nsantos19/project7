@@ -1,9 +1,11 @@
 import { readFile, writeFile } from "node:fs/promises";
 
-export function writeToJSONFile(path, data) {
-  // TODO
+// writeToJSONFile(path: string, data: object | object[]): Promise<void>
+export async function writeToJSONFile(path, data) {
+  await writeFile(path, JSON.stringify(data))
 }
 
+// readFromJSONFile(path: string): Promise<object | object[]>
 export function readFromJSONFile(path) {
-  // TODO
+  return readFile(path).then(e => JSON.parse(e))
 }
